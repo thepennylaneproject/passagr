@@ -1,0 +1,56 @@
+# ============================================================================
+# PHASE 5: AI PROVIDERS (Optional - for AI features)
+# ============================================================================
+# DeepSeek (Economy tier - ~$0.14/M tokens)
+# Get key from: https://platform.deepseek.com/api_keys
+DEEPSEEK_API_KEY=sk-b624256e4c054b5088a297dc0d1bd016
+# Get key from: https://platform.openai.com/api-keys
+OPENAI_API_KEY=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
+# Anthropic (Premium tier - Claude Sonnet 4)
+# Get key from: https://console.anthropic.com/settings/keys
+ANTHROPIC_API_KEY=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
+# Google AI (Long-context tasks - Gemini)
+# Get key from: https://aistudio.google.com/app/apikey
+GOOGLE_AI_API_KEY=AIzaSyDFjFWQzh0tB80GmzIxTzzylNioHJZXSfQ
+# Brave Search (Web search grounding)
+# Get key from: https://brave.com/search/api/
+BRAVE_SEARCH_API_KEY=AIzaSyDFjFWQzh0tB80GmzIxTzzylNioHJZXSfQ
+# Tavily (Advanced research)
+# Get key from: +https://tavily.com/
+TAVILY_API_KEY=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
+# ============================================================================
+# NOTES
+# ============================================================================
+# - VITE_ prefix means accessible in frontend (browser)
+# - No prefix means backend-only (Netlify Functions)
+# - Local provider (skills/salary) requires no API key
+# - Start with just Supabase, add AI keys as needed
+JWT_SECRET=38360e869d906eaaee9550643d9494b1
+# Coursera
+COURSERA_API_KEY=h5njFVb4BO3XpVkhbaddSyGYCKCH65HbeVuS2hLT41kaoi7o
+COURSERA_API_SECRET=Jt7QAjCFY4AoAW4mcmAI3AwtH8HcsACCcANR79YxAh4ZJkELKTeAfpJMVCqFzg9J
+#USAJobs
+USAJOBS_API_KEY=Kcnp4tvgMLJ5OmOzqQ6fDwMBc5kIYnd9jVdFhEEniIg
+#TheirStack
+THEIRSTACK_API_SECRET=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaEB0aGVwZW5ueWxhbmVwcm9qZWN0Lm9yZyIsInBlcm1pc3Npb25zIjoidXNlciIsImNyZWF0ZWRfYXQiOiIyMDI1LTEwLTA1VDA4OjQyOjIyLjk4NTQ1MyswMDowMCJ9.B9FgRrrk5J5EhaCZv74KYNRXGEu0K_i6ESvcLch8i0E
+
+
+https://api.adzuna.com/v1/api/jobs/us/search/1?
+  app_id=dc4c5eb3&
+  app_key=617d59bcef45aeac0264aff942c15081&
+  results_per_page=50&
+  what=marketing&
+  where=remote
+
+/v2/jobsearch/CdFGlKLmiGFJFc9/marketing/VA/100/acquisitiondate/DESC/0/10/30
+
+curl -H "Authorization: Bearer jB2dBmk3ajgNIiVOwAGkwn3vzzD5ZN9UVLSmTIVFPd7II0aEUttTUCqH0xyvphHqprm+4tlw0izNUCOIU6lkBw==" \
+     "https://api.careeronestop.org/v2/jobsearch/CdFGlKLmiGFJFc9/marketing/VA/100/acquisitiondate/DESC/0/10/30"
+
+curl -H "Authorization: Bearer jB2dBmk3ajgNIiVOwAGkwn3vzzD5ZN9UVLSmTIVFPd7II0aEUttTUCqH0xyvphHqprm+4tlw0izNUCOIU6lkBw==" \
+     "https://api.careeronestop.org/v2/jobsearch/CdFGlKLmiGFJFc9/marketing/VA/100/acquisitiondate/DESC/0/10/30"
+
+ingest_jobs.ts
+
+npx netlify-cli dev
+npx supabase gen types typescript --project-id xqkpsrxyuhfdpwhdjpwy > src/lib/supabase-types.ts
