@@ -1,16 +1,17 @@
 // api/public.ts
 import { Request, Response } from 'express';
-import { pool } from './server';
+import { pgPool as pool } from './server';
 
 export const getCountries = async (req: Request, res: Response) => {
     try {
         const result = await pool.query(
-            `SELECT id, name, iso2, regions, last_verified_at 
+            `SELECT id, name, iso2, regions, last_verified_at, lgbtq_rights_index, abortion_access_status 
              FROM countries 
              WHERE status = 'published'`
         );
         res.json(result.rows);
     } catch (error) {
+        console.error('Error in getCountries:', error);
         res.status(500).json({ error: 'Failed to fetch countries' });
     }
 };

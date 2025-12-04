@@ -66,9 +66,18 @@ export const handler = async (task: EditorialRouterTask) => {
 
         try {
             await pool.query(
-                `INSERT INTO editorial_reviews (entity_type, entity_id, status, notes)
-                 VALUES ($1, $2, $3, $4)`,
-                [entity_type, entity_id, 'pending', `Requires review. Reason: ${reason}.`]
+                `INSERT INTO editorial_reviews
+                 (entity_type, entity_id, status, notes, proposed_data, diff_summary, diff_fields)
+                 VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+                [
+                    entity_type,
+                    entity_id,
+                    'pending',
+                    `Requires review. Reason: ${reason}.`,
+                    JSON.stringify(proposedEntity),
+                    differOutput.diff_summary,
+                    JSON.stringify(differOutput.diff_fields)
+                ]
             );
             console.log(`Editorial review created for ${entity_type} ${entity_id}`);
         } catch (error) {

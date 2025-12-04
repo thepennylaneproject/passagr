@@ -2,14 +2,7 @@
 import { Request, Response } from 'express';
 import { scanForStaleEntities, enqueueFetcherTasks } from '../workers/freshness_scanner';
 import { checkAllLinks } from '../workers/link_checker';
-import { Pool } from 'pg';
-
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
+import { pgPool as pool } from './server';
 
 // Middleware to verify cron job authentication
 export function verifyCronAuth(req: Request, res: Response, next: Function) {
